@@ -1,0 +1,39 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/wangguojun/source_code/curb_detection/detection/Release/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/ninja" "cmTC_214b6"
+[1/2] Building C object CMakeFiles/cmTC_214b6.dir/CheckSymbolExists.c.o
+[2/2] Linking C executable cmTC_214b6
+FAILED: : && /usr/bin/gcc   -rdynamic CMakeFiles/cmTC_214b6.dir/CheckSymbolExists.c.o  -o cmTC_214b6   && :
+CMakeFiles/cmTC_214b6.dir/CheckSymbolExists.c.o：在函数‘main’中：
+CheckSymbolExists.c:(.text+0x16)：对‘pthread_create’未定义的引用
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+File /home/wangguojun/source_code/curb_detection/detection/Release/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/wangguojun/source_code/curb_detection/detection/Release/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/ninja" "cmTC_c7ddb"
+[1/2] Building C object CMakeFiles/cmTC_c7ddb.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_c7ddb
+FAILED: : && /usr/bin/gcc -DCHECK_FUNCTION_EXISTS=pthread_create  -rdynamic CMakeFiles/cmTC_c7ddb.dir/CheckFunctionExists.c.o  -o cmTC_c7ddb  -lpthreads && :
+/usr/bin/ld: 找不到 -lpthreads
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+

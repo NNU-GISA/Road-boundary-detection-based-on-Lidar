@@ -1,0 +1,6 @@
+/home/wangguojun/source_code/curb_detection/detection/Debug/CMakeFiles/rebuild_cache.dir
+/home/wangguojun/source_code/curb_detection/detection/Debug/CMakeFiles/edit_cache.dir
+/home/wangguojun/source_code/curb_detection/detection/Debug/CMakeFiles/detection_thread_test.dir
+/home/wangguojun/source_code/curb_detection/detection/Debug/lib/CMakeFiles/rebuild_cache.dir
+/home/wangguojun/source_code/curb_detection/detection/Debug/lib/CMakeFiles/edit_cache.dir
+/home/wangguojun/source_code/curb_detection/detection/Debug/lib/CMakeFiles/extract.dir

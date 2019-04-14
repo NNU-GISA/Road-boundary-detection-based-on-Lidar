@@ -1,0 +1,42 @@
+﻿cmake_minimum_required(VERSION 2.8)
+
+project(main)
+#project(detection_thread_test)
+#file(GLOB SRC ${CMAKE_CURRENT_SOURCE_DIR}/lib *.cpp)
+#find_package(OpenMP)
+#if (OPENMP_FOUND)
+#    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+#    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+#    set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+#endif()
+find_package(OpenMP REQUIRED)
+find_package(Qt5Charts CONFIG REQUIRED)
+find_package(jsoncpp REQUIRED)
+#add_definitions(-std=c++0x)
+#add_compile_options(-std=c++11)
+#set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-std=c++14 -march=native")
+#set(PCL_DIR /usr/local/share/pcl-1.8)
+find_package(PCL 1.8 REQUIRED)
+#find_path(MLPACK_INCLUDE_DIR
+#  NAMES core.hpp prereqs.hpp PATHS  /usr/local/include/mlpack)
+#find_library(MLPACK_LIBRARY
+#  NAMES mlpack PATHS  /usr/local/lib)
+message(STATUS "PCL library is ${PCL_LIBRARY_DIRS}" )
+message(STATUS "mlpack path is ${MLPACK_INCLUDE_DIR}")
+message(STATUS "mlpack lib is ${MLPACK_LIBRARY}")
+message(STATUS "Qt5Charts include path is " ${Qt5Charts_INCLUDE_DIRS})
+find_package(OpenCV REQUIRED)
+include_directories(${PCL_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS} ${MLPACK_INCLUDE_DIR} ${Qt5Charts_INCLUDE_DIRS} ./lib/
+     /home/wangguojun/3rdLibrary/limbo/src/)
+link_directories(${PCL_LIBRARY_DIRS} ${MLPACK_LIBRARY} /home/wangguojun/source_code/libgp/build)
+add_definitions(${PCL_DEFINITIONS})
+#link_directories(/home/wangguojun/source_code ./)
+add_subdirectory(./lib)
+
+#add_library(extract ${SRC})
+#target_link_libraries(extract ${PCL_LIBRARIES} OpenMP::OpenMP_CXX)
+
+add_executable(${PROJECT_NAME} "main.cpp")
+
+target_link_libraries(${PROJECT_NAME} ${PCL_LIBRARIES} ${OpenCV_LIBS} extract jsoncpp)
